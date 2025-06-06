@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>⚠️ Virus Terdeteksi!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      animation: blink 0.8s infinite;
+    }
+
+    p {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+
+    button:hover {
+      background-color: darkred;
+    }
+
+    @keyframes blink {
+      0% {opacity: 1;}
+      50% {opacity: 0;}
+      100% {opacity: 1;}
+    }
+  </style>
+</head>
+<body onload="startPrank()">
+  <h1>⚠️ VIRUS TERDETEKSI ⚠️</h1>
+  <p>File sistem rusak. Seluruh data akan dihapus dalam:</p>
+  <h1 id="timer">10</h1>
+  <p><button onclick="triggerPanic()">Tutup Virus</button></p>
+
+  <audio id="alertSound" loop>
+    <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
+  </audio>
+
+  <script>
+    let countdown = 10;
+
+    function startPrank() {
+      document.getElementById('alertSound').play();
+      navigator.vibrate([500, 300, 500, 300]); // getar HP
+      setInterval(() => {
+        if (countdown > 0) {
+          countdown--;
+          document.getElementById("timer").innerText = countdown;
+        } else {
+          document.getElementById("timer").innerText = "💥 DIHAPUS!";
+          alert("💀 Data kamu sudah dihapus... PRANK!!!");
+        }
+      }, 1000);
+    }
+
+    function triggerPanic() {
+      alert("🚨 Gagal menutup virus!");
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          window.open("https://www.google.com/search?q=kena+virus+bohongan", "_blank");
+        }, i * 300);
+      }
+    }
+  </script>
+</body>
+</html>
